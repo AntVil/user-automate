@@ -13,16 +13,32 @@
         <script type="text/javascript" src="./script.js"></script>
     </head>
     <body>
+        <input id="editing-automation" type="checkbox" />
         <header>
-            <div id="actions-list">
-                <div id="new-action">
-                    <button onclick="addAction()">+</button>
+            <div id="automations-list">
+                <div id="new-automation">
+                    <button onclick="addAutomation()">+</button>
                 </div>
             </div>
         </header>
 
         <main>
-
+            <div id="automation-editor">
+                <div id="automation-info">
+                    <input id="automation-info-id" style="display: none;" disabled />
+                    <input id="automation-info-name" disabled />
+                    <input id="automation-info-repeats" type="number" />
+                    <button id="automation-info-cancel" onclick="cancelAutomation()">cancel</button>
+                    <button id="automation-info-save" onclick="saveAutomation()">save</button>
+                </div>
+                <div id="action-controls">
+                    <button id="start-record" onclick="startRecord()">start record</button>
+                    <button id="stop-record" onclick="stopRecord()" disabled>stop record</button>
+                </div>
+                <div id="actions-list">
+                    
+                </div>
+            </div>
         </main>
     </body>
 </html>

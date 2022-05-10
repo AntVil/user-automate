@@ -3,6 +3,15 @@
     --theme-color-1: #FF9900;
     --theme-color-2: #EE8800;
     --theme-color-3: #DD7700;
+
+    --theme-color-4: #0099FF;
+    --theme-color-5: #00FF99;
+    --theme-color-6: #9900FF;
+    --theme-color-7: #FF0099;
+}
+
+*{
+    transition: all 0.2s;
 }
 
 body{
@@ -13,6 +22,28 @@ body{
     height: 100vh;
     margin: 0;
     background-color: var(--theme-color-0);
+}
+
+header, main{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#editing-automation:checked~header{
+    z-index: -1;
+    opacity: 0;
+}
+
+#editing-automation:not(:checked)~main{
+    z-index: -1;
+    opacity: 0;
+}
+
+input[type="checkbox"]{
+    display: none;
 }
 
 button{
@@ -32,23 +63,30 @@ button:hover{
     cursor: pointer;
 }
 
-#actions-list{
+#automations-list{
     position: fixed;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     left: 50%;
     transform: translate(-50%, 0);
     gap: 5px;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    padding: 5px;
 }
 
-#actions-list::-webkit-scrollbar {
+#automations-list::-webkit-scrollbar {
     display: none;
 }
 
-#actions-list>*{
+#automations-list>*:last-child{
+    margin-bottom: 100vh;
+}
+
+#automations-list>*{
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     background-color: var(--theme-color-1);
@@ -58,7 +96,63 @@ button:hover{
     gap: 5px;
 }
 
-#actions-list>#new-action{
+#automations-list>#new-automation{
     display: grid;
     grid-template-columns: 1fr;
+}
+
+#automation-editor{
+    display: grid;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    height: 100vh;
+    transform: translate(-50%, 0%);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    padding: 5px;
+    gap: 5px;
+}
+
+#automation-info{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+#action-controls{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+#actions-list{
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 5px;
+}
+
+#actions-list::-webkit-scrollbar {
+    display: none;
+}
+
+#actions-list>*:last-child{
+    margin-bottom: 100vh;
+}
+
+#actions-list>*[data-content*="move"]{
+    background-color: var(--theme-color-4);
+}
+
+#actions-list>*[data-content*="click"]{
+    background-color: var(--theme-color-5);
+}
+
+#actions-list>*[data-content*="press"]{
+    background-color: var(--theme-color-6);
+}
+
+#actions-list>*[data-content*="release"]{
+    background-color: var(--theme-color-7);
 }

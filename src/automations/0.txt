@@ -1,0 +1,2 @@
+new automation
+-repeats: 1
