@@ -16,9 +16,15 @@ body{
 }
 
 button{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
     background-color: var(--theme-color-2);
     border: 1px solid var(--theme-color-3);
     border-radius: 5px;
+    user-select: none;
 }
 
 button:hover{
@@ -34,6 +40,12 @@ button:hover{
     left: 50%;
     transform: translate(-50%, 0);
     gap: 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#actions-list::-webkit-scrollbar {
+    display: none;
 }
 
 #actions-list>*{
@@ -46,7 +58,7 @@ button:hover{
     gap: 5px;
 }
 
-#new_action{
+#actions-list>#new-action{
     display: grid;
     grid-template-columns: 1fr;
 }
